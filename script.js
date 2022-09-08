@@ -12,30 +12,34 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === null) {return 'canceled';}
-  if (['rock', 'scissors', 'paper'].indexOf(playerSelection) < 0) {return 'incorrect input for player\'s choice parameter';}
   if (playerSelection === 'rock') {
     if (computerSelection === 'rock') {
       return 'tie';
     } else if (computerSelection === 'paper') {
+      computerScore++;
       return 'you lose. paper beats rock';
     } else if (computerSelection === 'scissors') {
+      playerScore++;
       return 'you win. rock beats scissors';
     }
   }
   if (playerSelection === 'paper') {
     if (computerSelection === 'rock') {
+      playerScore++;
       return 'you win. paper beats rock';
     } else if (computerSelection === 'paper') {
       return 'tie';
     } else if (computerSelection === 'scissors') {
+      computerScore++;
       return 'you lose. scissors beats paper';
     }
   }
   if (playerSelection === 'scissors') {
     if (computerSelection === 'rock') {
+      computerScore++;
       return 'you lose. rock beats scissors';
     } else if (computerSelection === 'paper') {
+      playerScore++;
       return 'you win. scissors beats paper';
     } else if (computerSelection === 'scissors') {
       return 'tie';
@@ -43,13 +47,19 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game(rounds) {
-  if (rounds < 1 || isNaN(rounds)) {return 'incorrect input for rounds parameter';}
-  let counter = 0;
-  while (counter < Math.floor(rounds)) {
-    const result = playRound(prompt('rock, paper, or scissors? '), getComputerChoice());
-    if (result === 'canceled') {console.log('you quit the game'); break;}
-    console.log(result);
-    counter++;
+const buttons = document.querySelectorAll('button');
+const results = document.querySelector('#results');
+results.style.cssText = 'white-space: pre;';
+let playerScore = 0;
+let computerScore = 0;
+buttons.forEach((button) => button.addEventListener('click', () => {
+  if (playerScore === 5) {
+    results.textContent = 'the winner is you!';
+  } else if (computerScore === 5) {
+    results.textContent = 'the winner is computer!';
+  } else {
+  results.textContent = `${playRound(button.textContent, getComputerChoice())}\r\n
+  your score: ${playerScore}\r\n
+  computer's score: ${computerScore}`;
   }
-}
+}));
