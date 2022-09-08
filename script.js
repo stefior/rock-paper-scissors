@@ -52,6 +52,14 @@ const results = document.querySelector('#results');
 results.style.cssText = 'white-space: pre;';
 let playerScore = 0;
 let computerScore = 0;
-buttons.forEach((button) => button.addEventListener('click', () => {results.innerHTML = `${playRound(button.textContent, getComputerChoice())}\r\n
-your score: ${playerScore}\r\n
-computer's score: ${computerScore}`}));
+buttons.forEach((button) => button.addEventListener('click', () => {
+  if (playerScore === 5) {
+    results.textContent = 'the winner is you!';
+  } else if (computerScore === 5) {
+    results.textContent = 'the winner is computer!';
+  } else {
+  results.textContent = `${playRound(button.textContent, getComputerChoice())}\r\n
+  your score: ${playerScore}\r\n
+  computer's score: ${computerScore}`;
+  }
+}));
