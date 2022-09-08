@@ -40,6 +40,5 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  console.log(playRound(prompt('rock, paper, or scissors? '), getComputerChoice()));
-}
+const buttons = document.querySelectorAll('button');
+buttons.forEach((button) => button.addEventListener('click', () => playRound(button.textContent, getComputerChoice())));
