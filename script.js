@@ -12,8 +12,6 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
-  if (playerSelection === null) {return 'canceled';}
-  if (['rock', 'scissors', 'paper'].indexOf(playerSelection) < 0) {return 'incorrect input for player\'s choice parameter';}
   switch (playerSelection === 'rock') {
     case (computerSelection === 'rock'):
       return 'tie';
