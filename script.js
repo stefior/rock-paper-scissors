@@ -14,29 +14,32 @@ function getComputerChoice() {
 function playRound(playerSelection, computerSelection) {
   if (playerSelection === null) {return 'canceled';}
   if (['rock', 'scissors', 'paper'].indexOf(playerSelection) < 0) {return 'incorrect input for player\'s choice parameter';}
-  switch (playerSelection === 'rock') {
-    case (computerSelection === 'rock'):
+  if (playerSelection === 'rock') {
+    if (computerSelection === 'rock') {
       return 'tie';
-    case (computerSelection === 'paper'):
+    } else if (computerSelection === 'paper') {
       return 'you lose. paper beats rock';
-    case (computerSelection === 'scissors'):
+    } else if (computerSelection === 'scissors') {
       return 'you win. rock beats scissors';
+    }
   }
-  switch (playerSelection === 'paper') {
-    case (computerSelection === 'rock'):
+  if (playerSelection === 'paper') {
+    if (computerSelection === 'rock') {
       return 'you win. paper beats rock';
-    case (computerSelection === 'paper'):
+    } else if (computerSelection === 'paper') {
       return 'tie';
-    case (computerSelection === 'scissors'):
+    } else if (computerSelection === 'scissors') {
       return 'you lose. scissors beats paper';
+    }
   }
-  switch (playerSelection === 'scissors') {
-    case (computerSelection === 'rock'):
+  if (playerSelection === 'scissors') {
+    if (computerSelection === 'rock') {
       return 'you lose. rock beats scissors';
-    case (computerSelection === 'paper'):
+    } else if (computerSelection === 'paper') {
       return 'you win. scissors beats paper';
-    case (computerSelection === 'scissors'):
+    } else if (computerSelection === 'scissors') {
       return 'tie';
+    }
   }
 }
 
