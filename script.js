@@ -40,13 +40,6 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game(rounds) {
-  if (rounds < 1 || isNaN(rounds)) {return 'incorrect input for rounds parameter';}
-  let counter = 0;
-  while (counter < Math.floor(rounds)) {
-    const result = playRound(prompt('rock, paper, or scissors? '), getComputerChoice());
-    if (result === 'canceled') {console.log('you quit the game'); break;}
-    console.log(result);
-    counter++;
-  }
+function game() {
+  console.log(playRound(prompt('rock, paper, or scissors? '), getComputerChoice()));
 }
